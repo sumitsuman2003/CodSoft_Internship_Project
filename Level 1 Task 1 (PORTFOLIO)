@@ -1,1 +1,141 @@
+# HTML FILE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>SUMIT SUMAN</h1>
+        <p>"First deserve then desire"</p>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <img src="image/pexels-chloekalaartist-1043474.jpg" alt="SUMIT SUMAN" class="profile-image" style="width : 10%; height: 10% ">
+        
+        <p>Motivated and enthusiastic 3rd-year Computer Science(AIML) student passionate about Machine Learning and
+Data Structures & Algorithms. To work in a dynamic and growth-oriented organization where I can utilize my
+skills and knowledge effectively and contribute to the success of the organization while continuously learning
+and growing professionally.</p>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>DSA WITH JAVA</li>
+            <li>Python</li>
+            <li>SQL</li>
+            <li>Wordpress</li>
+        </ul>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Project Title 1</h3>
+            <h4>Sakshamata</h4>
+            <p>Designed and developed an accessible web platform using HTML, CSS, and
+JavaScript, compliant with WCAG standards, to provide examination-related
+resources for individuals with disabilities (PWDs).</p>
+<p>Implemented key features such as syllabus repositories, inclusive sample papers,
+progress tracking and assistive tools like text-to-speech and keyboard-only
+navigation, enhancing usability for visually, auditory, and motor- impairedusers.
+</p>
+<p>•Collaborated in a team-based development cycle involving user research,
+prototyping, accessibility testing, and continuous feedback loops to ensure
+inclusivity, scalability, and real-world impact for over 6% of unemployed PWDs in
+India.</p>
+        </div>
+        <div class="project">
+            <h3>Project Title 2</h3>
+            <h4>Library Management System</h4>
+            <p>•Development and Technology: Created a user-friendly GUI Library Management
+System using Tkinter. Implemented efficient data storage and retrieval through
+MySQL database.</p>
+<p>Key Functionalities: Developed functions for adding, deleting, issuing, returning,
+and viewing books. Assigned each functionality to a button for a seamless user
+experience.</p>
+<p>Challenges and Solutions: Overcame database integration challenges between
+MySQL and Tkinter GUI. Successfully addressed issues related to connectivity and
+data manipulation.</p>
+        </div>
+        <!-- Add more projects as needed -->
+    </section>
+
+    <section id="resume">
+        <h2>Resume</h2>
+        <a href="your-resume.pdf" download>Download My Resume</a>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Email: your-email@example.com</p>
+        <p>Phone: (123) 456-7890</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+
+
+#CSS FILE
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+h2 {
+    color: #333;
+}
+
+section {
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.profile-image {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.project {
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
 
