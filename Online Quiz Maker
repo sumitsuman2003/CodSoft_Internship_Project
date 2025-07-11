@@ -1,0 +1,180 @@
+#HTML files
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz Maker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Online Quiz Maker</h1>
+        <nav>
+            <a href="#create-quiz">Create Quiz</a>
+            <a href="#take-quiz">Take Quiz</a>
+            <a href="#quizzes">Available Quizzes</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="create-quiz">
+            <h2>Create a New Quiz</h2>
+            <form id="quiz-form">
+                <input type="text" placeholder="Quiz Title" required>
+                <input type="text" placeholder="Question" required>
+                <input type="text" placeholder="Option A" required>
+                <input type="text" placeholder="Option B" required>
+                <input type="text" placeholder="Option C" required>
+                <input type="text" placeholder="Option D" required>
+                <input type="text" placeholder="Correct Option (A/B/C/D)" required>
+                <button type="submit">Create Quiz</button>
+            </form>
+        </section>
+
+        <section id="take-quiz">
+            <h2>Take a Quiz</h2>
+            <div id="quiz-container"></div>
+            <button id="submit-quiz" style="display: none;">Submit Quiz</button>
+            <div id="quiz-results" style="display:none;"></div>
+        </section>
+
+        <section id="quizzes">
+            <h2>Available Quizzes</h2>
+            <ul id="quiz-list"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Online Quiz Maker. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+#css file 
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+header {
+    background: #3b5998;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav a {
+    margin: 0 15px;
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 1rem;
+}
+
+section {
+    margin: 2rem 0;
+}
+
+input[type="text"], button {
+    display: block;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #3b5998;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2e4678;
+}
+
+#quiz-results {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    background-color: #eef;
+}
+
+
+#java script
+
+let quizzes = [];
+
+document.getElementById("quiz-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    
+    const title = this.querySelector('input[type="text"]').value;
+    const question = this.querySelectorAll('input[type="text"]')[1].value;
+    const options = [
+        this.querySelectorAll('input[type="text"]')[2].value,
+        this.querySelectorAll('input[type="text"]')[3].value,
+        this.querySelectorAll('input[type="text"]')[4].value,
+        this.querySelectorAll('input[type="text"]')[5].value,
+    ];
+    const correct = this.querySelectorAll('input[type="text"]')[6].value;
+
+    quizzes.push({ title, question, options, correct });
+
+    this.reset();
+    showQuizList();
+});
+
+function showQuizList() {
+    const quizList = document.getElementById("quiz-list");
+    quizList.innerHTML = '';
+    quizzes.forEach((quiz, index) => {
+        let li = document.createElement("li");
+        li.textContent = quiz.title;
+        li.addEventListener("click", () => takeQuiz(index));
+        quizList.appendChild(li);
+    });
+}
+
+function takeQuiz(index) {
+    const quizContainer = document.getElementById("quiz-container");
+    const quiz = quizzes[index];
+    quizContainer.innerHTML = `<h3>${quiz.title}</h3><p>${quiz.question}</p>`;
+    
+    quiz.options.forEach((option, i) => {
+        quizContainer.innerHTML += `
+            <label>
+                <input type="radio" name="answer" value="${String.fromCharCode(65 + i)}"> ${option}
+            </label><br>`;
+    });
+    
+    document.getElementById("submit-quiz").style.display = 'block';
+    document.getElementById("quiz-results").style.display = 'none';
+
+    document.getElementById("submit-quiz").onclick = function() {
+        const selectedOption = document.querySelector('input[name="answer"]:checked');
+        let resultText = '';
+        
+        if (selectedOption) {
+            const answer = selectedOption.value;
+            if (answer === quiz.correct) {
+                resultText = 'Correct!';
+            } else {
+                resultText = `Wrong! The correct answer was ${quiz.correct}.`;
+            }
+        } else {
+            resultText = 'Please select an answer.';
+        }
+
+        document.getElementById("quiz-results").innerText = resultText;
+        document.getElementById("quiz-results").style.display = "block";
+    };
+}
